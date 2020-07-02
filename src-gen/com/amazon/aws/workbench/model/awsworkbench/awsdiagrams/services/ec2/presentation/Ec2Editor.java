@@ -1,6 +1,6 @@
 /**
  */
-package com.amazon.aws.workbench.model.awsworkbench.builders.presentation;
+package com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -153,19 +153,21 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
-import com.amazon.aws.workbench.model.awsworkbench.builders.provider.BuildersItemProviderAdapterFactory;
+import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.provider.Ec2ItemProviderAdapterFactory;
 
-import com.amazon.aws.workbench.model.awsworkbench.datatypes.java.lang.presentation.AwsworkbenchEditorPlugin;
+import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.provider.CoreItemProviderAdapterFactory;
+
+import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.datatypes.java.lang.presentation.AwsworkbenchEditorPlugin;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * This is an example of a Builders model editor.
+ * This is an example of a Ec2 model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class BuildersEditor extends MultiPageEditorPart
+public class Ec2Editor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -326,16 +328,16 @@ public class BuildersEditor extends MultiPageEditorPart
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor().setActiveEditor(BuildersEditor.this);
+					getActionBarContributor().setActiveEditor(Ec2Editor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
 				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
-					getActionBarContributor().setActiveEditor(BuildersEditor.this);
+					getActionBarContributor().setActiveEditor(Ec2Editor.this);
 					handleActivate();
 				}
-			} else if (p == BuildersEditor.this) {
+			} else if (p == Ec2Editor.this) {
 				handleActivate();
 			}
 		}
@@ -514,7 +516,7 @@ public class BuildersEditor extends MultiPageEditorPart
 						public void run() {
 							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
-								getSite().getPage().closeEditor(BuildersEditor.this, false);
+								getSite().getPage().closeEditor(Ec2Editor.this, false);
 							}
 						}
 					});
@@ -525,7 +527,7 @@ public class BuildersEditor extends MultiPageEditorPart
 						@Override
 						public void run() {
 							changedResources.addAll(visitor.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == BuildersEditor.this) {
+							if (getSite().getPage().getActiveEditor() == Ec2Editor.this) {
 								handleActivate();
 							}
 						}
@@ -556,7 +558,7 @@ public class BuildersEditor extends MultiPageEditorPart
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(BuildersEditor.this, false);
+				getSite().getPage().closeEditor(Ec2Editor.this, false);
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -670,7 +672,7 @@ public class BuildersEditor extends MultiPageEditorPart
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuildersEditor() {
+	public Ec2Editor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -687,7 +689,8 @@ public class BuildersEditor extends MultiPageEditorPart
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BuildersItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new Ec2ItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -998,7 +1001,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1034,7 +1037,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// Create a page for the parent tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1063,7 +1066,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// This is the page for the list viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new ListViewer(composite);
@@ -1088,7 +1091,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// This is the page for the tree viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1115,7 +1118,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// This is the page for the table viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TableViewer(composite);
@@ -1158,7 +1161,7 @@ public class BuildersEditor extends MultiPageEditorPart
 			// This is the page for the table tree viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), BuildersEditor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1380,8 +1383,8 @@ public class BuildersEditor extends MultiPageEditorPart
 				ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
-				BuildersEditor.this.setSelectionToViewer(selection);
-				BuildersEditor.this.setFocus();
+				Ec2Editor.this.setSelectionToViewer(selection);
+				Ec2Editor.this.setFocus();
 			}
 
 			@Override

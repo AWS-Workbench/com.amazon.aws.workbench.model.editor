@@ -12,12 +12,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="com.amazon.aws.workbench.model.awsworkbench.builders.presentation.BuildersModelWizardID"
-            name="%_UI_BuildersModelWizard_label"
-            class="com.amazon.aws.workbench.model.awsworkbench.builders.presentation.BuildersModelWizard"
+            id="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation.CoreModelWizardID"
+            name="%_UI_CoreModelWizard_label"
+            class="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation.CoreModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/BuildersModelFile.gif">
-         <description>%_UI_BuildersModelWizard_description</description>
+            icon="icons/full/obj16/CoreModelFile.gif">
+         <description>%_UI_CoreModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -25,13 +25,40 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated awsworkbench -->
       <editor
-            id="com.amazon.aws.workbench.model.awsworkbench.builders.presentation.BuildersEditorID"
-            name="%_UI_BuildersEditor_label"
-            icon="icons/full/obj16/BuildersModelFile.gif"
-            extensions="builders"
-            class="com.amazon.aws.workbench.model.awsworkbench.builders.presentation.BuildersEditor"
-            contributorClass="com.amazon.aws.workbench.model.awsworkbench.builders.presentation.BuildersActionBarContributor">
+            id="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation.CoreEditorID"
+            name="%_UI_CoreEditor_label"
+            icon="icons/full/obj16/CoreModelFile.gif"
+            extensions="core"
+            class="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation.CoreEditor"
+            contributorClass="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation.CoreActionBarContributor">
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated awsworkbench -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation.Ec2ModelWizardID"
+            name="%_UI_Ec2ModelWizard_label"
+            class="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation.Ec2ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Ec2ModelFile.gif">
+         <description>%_UI_Ec2ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated awsworkbench -->
+      <editor
+            id="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation.Ec2EditorID"
+            name="%_UI_Ec2Editor_label"
+            icon="icons/full/obj16/Ec2ModelFile.gif"
+            extensions="ec2"
+            class="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation.Ec2Editor"
+            contributorClass="com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation.Ec2ActionBarContributor">
+      </editor>
+   </extension>
 </plugin>
