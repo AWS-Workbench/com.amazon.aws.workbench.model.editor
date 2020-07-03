@@ -1,8 +1,6 @@
 /**
  */
-package com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation;
-
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.datatypes.java.lang.presentation.AwsworkbenchEditorPlugin;
+package com.amazon.aws.workbench.model.awsworkbench.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,12 +40,13 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
 /**
- * This is the action bar contributor for the Ec2 model editor.
+ * This is the action bar contributor for the Awsworkbench model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class Ec2ActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
+public class AwsworkbenchActionBarContributor extends EditingDomainActionBarContributor
+		implements ISelectionChangedListener {
 	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
@@ -147,7 +146,7 @@ public class Ec2ActionBarContributor extends EditingDomainActionBarContributor i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ec2ActionBarContributor() {
+	public AwsworkbenchActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
@@ -163,8 +162,8 @@ public class Ec2ActionBarContributor extends EditingDomainActionBarContributor i
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		super.contributeToToolBar(toolBarManager);
-		toolBarManager.add(new Separator("ec2-settings"));
-		toolBarManager.add(new Separator("ec2-additions"));
+		toolBarManager.add(new Separator("awsworkbench-settings"));
+		toolBarManager.add(new Separator("awsworkbench-additions"));
 	}
 
 	/**
@@ -178,8 +177,9 @@ public class Ec2ActionBarContributor extends EditingDomainActionBarContributor i
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_Ec2Editor_menu"),
-				"com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2MenuID");
+		IMenuManager submenuManager = new MenuManager(
+				AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_AwsworkbenchEditor_menu"),
+				"com.amazon.aws.workbench.model.awsworkbenchMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

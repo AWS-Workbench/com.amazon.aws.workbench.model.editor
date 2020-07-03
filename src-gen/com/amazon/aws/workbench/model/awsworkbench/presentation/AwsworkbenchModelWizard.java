@@ -1,6 +1,6 @@
 /**
  */
-package com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.presentation;
+package com.amazon.aws.workbench.model.awsworkbench.presentation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,11 +68,9 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.CoreFactory;
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.CorePackage;
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.datatypes.java.lang.provider.AwsworkbenchEditPlugin;
-
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.datatypes.java.lang.presentation.AwsworkbenchEditorPlugin;
+import com.amazon.aws.workbench.model.awsworkbench.AwsworkbenchFactory;
+import com.amazon.aws.workbench.model.awsworkbench.AwsworkbenchPackage;
+import com.amazon.aws.workbench.model.awsworkbench.provider.AwsworkbenchEditPlugin;
 
 import org.eclipse.core.runtime.Path;
 
@@ -90,15 +88,16 @@ import org.eclipse.ui.PartInitException;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CoreModelWizard extends Wizard implements INewWizard {
+public class AwsworkbenchModelWizard extends Wizard implements INewWizard {
 	/**
 	 * The supported extensions for created files.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(
-			AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_CoreEditorFilenameExtensions").split("\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS = Collections
+			.unmodifiableList(Arrays.asList(AwsworkbenchEditorPlugin.INSTANCE
+					.getString("_UI_AwsworkbenchEditorFilenameExtensions").split("\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -107,7 +106,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS = AwsworkbenchEditorPlugin.INSTANCE
-			.getString("_UI_CoreEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+			.getString("_UI_AwsworkbenchEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -115,7 +114,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CorePackage corePackage = CorePackage.eINSTANCE;
+	protected AwsworkbenchPackage awsworkbenchPackage = AwsworkbenchPackage.eINSTANCE;
 
 	/**
 	 * This caches an instance of the model factory.
@@ -123,7 +122,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoreFactory coreFactory = corePackage.getCoreFactory();
+	protected AwsworkbenchFactory awsworkbenchFactory = awsworkbenchPackage.getAwsworkbenchFactory();
 
 	/**
 	 * This is the file creation page.
@@ -131,7 +130,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoreModelWizardNewFileCreationPage newFileCreationPage;
+	protected AwsworkbenchModelWizardNewFileCreationPage newFileCreationPage;
 
 	/**
 	 * This is the initial object creation page.
@@ -139,7 +138,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CoreModelWizardInitialObjectCreationPage initialObjectCreationPage;
+	protected AwsworkbenchModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
 	/**
 	 * Remember the selection during initialization for populating the default container.
@@ -177,7 +176,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 		this.selection = selection;
 		setWindowTitle(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
 		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-				.getImageDescriptor(AwsworkbenchEditorPlugin.INSTANCE.getImage("full/wizban/NewCore")));
+				.getImageDescriptor(AwsworkbenchEditorPlugin.INSTANCE.getImage("full/wizban/NewAwsworkbench")));
 	}
 
 	/**
@@ -189,7 +188,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : corePackage.getEClassifiers()) {
+			for (EClassifier eClassifier : awsworkbenchPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass) eClassifier;
 					if (!eClass.isAbstract()) {
@@ -209,8 +208,8 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass) corePackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = coreFactory.create(eClass);
+		EClass eClass = (EClass) awsworkbenchPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EObject rootObject = awsworkbenchFactory.create(eClass);
 		return rootObject;
 	}
 
@@ -307,14 +306,14 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class CoreModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+	public class AwsworkbenchModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public CoreModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+		public AwsworkbenchModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
@@ -355,7 +354,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class CoreModelWizardInitialObjectCreationPage extends WizardPage {
+	public class AwsworkbenchModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -383,7 +382,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public CoreModelWizardInitialObjectCreationPage(String pageId) {
+		public AwsworkbenchModelWizardInitialObjectCreationPage(String pageId) {
 			super(pageId);
 		}
 
@@ -569,12 +568,13 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new CoreModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_CoreModelWizard_label"));
+		newFileCreationPage = new AwsworkbenchModelWizardNewFileCreationPage("Whatever", selection);
+		newFileCreationPage.setTitle(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_AwsworkbenchModelWizard_label"));
 		newFileCreationPage
-				.setDescription(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_CoreModelWizard_description"));
-		newFileCreationPage.setFileName(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_CoreEditorFilenameDefaultBase")
-				+ "." + FILE_EXTENSIONS.get(0));
+				.setDescription(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_AwsworkbenchModelWizard_description"));
+		newFileCreationPage
+				.setFileName(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_AwsworkbenchEditorFilenameDefaultBase")
+						+ "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -601,7 +601,7 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 					// Make up a unique new name here.
 					//
 					String defaultModelBaseFilename = AwsworkbenchEditorPlugin.INSTANCE
-							.getString("_UI_CoreEditorFilenameDefaultBase");
+							.getString("_UI_AwsworkbenchEditorFilenameDefaultBase");
 					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
 					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
@@ -611,8 +611,9 @@ public class CoreModelWizard extends Wizard implements INewWizard {
 				}
 			}
 		}
-		initialObjectCreationPage = new CoreModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_CoreModelWizard_label"));
+		initialObjectCreationPage = new AwsworkbenchModelWizardInitialObjectCreationPage("Whatever2");
+		initialObjectCreationPage
+				.setTitle(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_AwsworkbenchModelWizard_label"));
 		initialObjectCreationPage
 				.setDescription(AwsworkbenchEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);

@@ -1,6 +1,6 @@
 /**
  */
-package com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.presentation;
+package com.amazon.aws.workbench.model.awsworkbench.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -153,21 +153,17 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.services.ec2.provider.Ec2ItemProviderAdapterFactory;
-
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.core.provider.CoreItemProviderAdapterFactory;
-
-import com.amazon.aws.workbench.model.awsworkbench.awsdiagrams.datatypes.java.lang.presentation.AwsworkbenchEditorPlugin;
+import com.amazon.aws.workbench.model.awsworkbench.provider.AwsworkbenchItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * This is an example of a Ec2 model editor.
+ * This is an example of a Awsworkbench model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class Ec2Editor extends MultiPageEditorPart
+public class AwsworkbenchEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -328,16 +324,16 @@ public class Ec2Editor extends MultiPageEditorPart
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-					getActionBarContributor().setActiveEditor(Ec2Editor.this);
+					getActionBarContributor().setActiveEditor(AwsworkbenchEditor.this);
 
 					setCurrentViewer(contentOutlineViewer);
 				}
 			} else if (p instanceof PropertySheet) {
 				if (propertySheetPages.contains(((PropertySheet) p).getCurrentPage())) {
-					getActionBarContributor().setActiveEditor(Ec2Editor.this);
+					getActionBarContributor().setActiveEditor(AwsworkbenchEditor.this);
 					handleActivate();
 				}
-			} else if (p == Ec2Editor.this) {
+			} else if (p == AwsworkbenchEditor.this) {
 				handleActivate();
 			}
 		}
@@ -516,7 +512,7 @@ public class Ec2Editor extends MultiPageEditorPart
 						public void run() {
 							removedResources.addAll(visitor.getRemovedResources());
 							if (!isDirty()) {
-								getSite().getPage().closeEditor(Ec2Editor.this, false);
+								getSite().getPage().closeEditor(AwsworkbenchEditor.this, false);
 							}
 						}
 					});
@@ -527,7 +523,7 @@ public class Ec2Editor extends MultiPageEditorPart
 						@Override
 						public void run() {
 							changedResources.addAll(visitor.getChangedResources());
-							if (getSite().getPage().getActiveEditor() == Ec2Editor.this) {
+							if (getSite().getPage().getActiveEditor() == AwsworkbenchEditor.this) {
 								handleActivate();
 							}
 						}
@@ -558,7 +554,7 @@ public class Ec2Editor extends MultiPageEditorPart
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(Ec2Editor.this, false);
+				getSite().getPage().closeEditor(AwsworkbenchEditor.this, false);
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -672,7 +668,7 @@ public class Ec2Editor extends MultiPageEditorPart
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ec2Editor() {
+	public AwsworkbenchEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -689,8 +685,7 @@ public class Ec2Editor extends MultiPageEditorPart
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new Ec2ItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new AwsworkbenchItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -1001,7 +996,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// Create a page for the selection tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1037,7 +1032,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// Create a page for the parent tree view.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						Tree tree = new Tree(composite, SWT.MULTI);
@@ -1066,7 +1061,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// This is the page for the list viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new ListViewer(composite);
@@ -1091,7 +1086,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// This is the page for the tree viewer
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1118,7 +1113,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// This is the page for the table viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TableViewer(composite);
@@ -1161,7 +1156,7 @@ public class Ec2Editor extends MultiPageEditorPart
 			// This is the page for the table tree viewer.
 			//
 			{
-				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), Ec2Editor.this) {
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(), AwsworkbenchEditor.this) {
 					@Override
 					public Viewer createViewer(Composite composite) {
 						return new TreeViewer(composite);
@@ -1383,8 +1378,8 @@ public class Ec2Editor extends MultiPageEditorPart
 				ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
 			@Override
 			public void setSelectionToViewer(List<?> selection) {
-				Ec2Editor.this.setSelectionToViewer(selection);
-				Ec2Editor.this.setFocus();
+				AwsworkbenchEditor.this.setSelectionToViewer(selection);
+				AwsworkbenchEditor.this.setFocus();
 			}
 
 			@Override
