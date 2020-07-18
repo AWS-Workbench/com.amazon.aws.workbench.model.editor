@@ -33,4 +33,32 @@
             contributorClass="com.amazon.aws.workbench.model.awsworkbench.presentation.AwsworkbenchActionBarContributor">
       </editor>
    </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated awsworkbench -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ec2.presentation.Ec2ModelWizardID"
+            name="%_UI_Ec2ModelWizard_label"
+            class="ec2.presentation.Ec2ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Ec2ModelFile.gif">
+         <description>%_UI_Ec2ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated awsworkbench -->
+      <editor
+            id="ec2.presentation.Ec2EditorID"
+            name="%_UI_Ec2Editor_label"
+            icon="icons/full/obj16/Ec2ModelFile.gif"
+            extensions="ec2"
+            class="ec2.presentation.Ec2Editor"
+            contributorClass="ec2.presentation.Ec2ActionBarContributor">
+      </editor>
+   </extension>
 </plugin>
