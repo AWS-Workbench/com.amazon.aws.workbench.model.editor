@@ -154,13 +154,6 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import com.amazon.aws.workbench.model.awsworkbench.provider.AwsworkbenchItemProviderAdapterFactory;
-
-import apigateway.provider.ApigatewayItemProviderAdapterFactory;
-import certificatemanager.provider.CertificatemanagerItemProviderAdapterFactory;
-import core.provider.CoreItemProviderAdapterFactory;
-import dynamodb.provider.DynamodbItemProviderAdapterFactory;
-import ec2.provider.Ec2ItemProviderAdapterFactory;
-import iam.provider.IamItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -692,12 +685,6 @@ public class AwsworkbenchEditor extends MultiPageEditorPart
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new AwsworkbenchItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new Ec2ItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ApigatewayItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CertificatemanagerItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new IamItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new DynamodbItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
